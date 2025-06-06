@@ -3,6 +3,6 @@ public class DemoMethod{
         System.out.println("Hello"+" "+name);
     }
     public static void main(String args[]){
-        Details("Pooja");
+        Details("keerthana");
     }
 }
