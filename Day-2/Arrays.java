@@ -1,24 +1,28 @@
 import java.util.Scanner;
 
-public class SplitWords {
+public class VowelsConsonants {
+
     public static void main(String[] args) {
-
         Scanner in = new Scanner(System.in);
+        System.out.println("Enter the String: ");
+        
+        String input = in.nextLine(); 
 
-        System.out.print("Enter a sentence: ");
+        int vowel = 0, consonant = 0;
 
-        String sentence = in.nextLine();
+        for (int i = 0; i < input.length(); i++) {
+            char ch = Character.toLowerCase(input.charAt(i)); 
 
-        String[] words = sentence.split(" ");
-
-        System.out.println("Words in the sentence:");
-
-        for (String word : words) {
-
-            System.out.println(word);
-
+            if (Character.isLetter(ch)) {
+                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+                    vowel++;
+                } else {
+                    consonant++;
+                }
+            }
         }
 
+        System.out.println("Vowels: " + vowel);
+        System.out.println("Consonants: " + consonant);
     }
-
 }
