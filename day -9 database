@@ -1,0 +1,332 @@
+ show databases;
++--------------------+
+| Database           |
++--------------------+
+| empdb              |
+| information_schema |
+| login              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student            |
+| sys                |
++--------------------+
+8 rows in set (0.00 sec)
+
+mysql> select*
+    -> from student;
+ERROR 1046 (3D000): No database selected
+mysql> use student;
+Database changed
+mysql> select*
+    -> from student;
++-------+-------+---------------+---------+
+| sname | sroll | sgmail        | sphnum  |
++-------+-------+---------------+---------+
+| sree  |   234 | gsdfsdfdsgfdg | 4356453 |
++-------+-------+---------------+---------+
+1 row in set (0.00 sec)
+
+mysql> insert into student values('keerthana',234,'keerthana@gmail.com',53463267);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into student values('vaishu',3434,'vaishu@gmail.com',467868);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into student values('Harini',5645,'Harini@gmail.com'655432);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '655432)' at line 1
+mysql> insert into student values('Harini',5645,'Harini@gmail.com',655432);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select* from student;
++-----------+-------+---------------------+----------+
+| sname     | sroll | sgmail              | sphnum   |
++-----------+-------+---------------------+----------+
+| sree      |   234 | gsdfsdfdsgfdg       |  4356453 |
+| keerthana |   234 | keerthana@gmail.com | 53463267 |
+| vaishu    |  3434 | vaishu@gmail.com    |   467868 |
+| Harini    |  5645 | Harini@gmail.com    |   655432 |
++-----------+-------+---------------------+----------+
+4 rows in set (0.00 sec)
+
+mysql> create database Employees;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show Employees;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Employees' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| empdb              |
+| employees          |
+| information_schema |
+| login              |
+| mysql              |
+| performance_schema |
+| sakila             |
+| student            |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use employees;
+Database changed
+mysql> create table employee(
+    -> empid int,
+    -> name varchar(50),
+    -> dept varchar(50),
+    -> salary int,
+    -> joindate DATA
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DATA
+)' at line 6
+mysql> create table employee(
+    -> empid int primary key,
+    -> name varchar(50),
+    -> empid int,
+    -> empid int,
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 6
+mysql> create table employee(
+    -> empid int primary key,
+    -> name varchar(50),
+    -> dept varchar(50),
+    -> salary int,
+    -> joindate date
+    -> );
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_employees |
++---------------------+
+| employee            |
++---------------------+
+1 row in set (0.02 sec)
+
+mysql> desc employees;
+ERROR 1146 (42S02): Table 'employees.employees' doesn't exist
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int         | NO   | PRI | NULL    |       |
+| name     | varchar(50) | YES  |     | NULL    |       |
+| dept     | varchar(50) | YES  |     | NULL    |       |
+| salary   | int         | YES  |     | NULL    |       |
+| joindate | date        | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.04 sec)
+
+mysql> insert into employee values(1, 'alam freed','finance',30000,2023-02-20),
+    -> (2, 'henry','marketing',40000,2023-06-29),
+    -> ^C
+mysql> insert into employee values(1, 'alam freed','finance',30000,2023-02-20),
+    -> (2, 'henry','marketing',40000,2023-06-29),
+    -> ^C
+mysql> insert into employee values(1, 'alam freed','finance',30000,2023-02-20),
+    -> (2, 'henry','marketing',40000,2023-06-29),
+    ->
+    -> (2, 'vimal','marketing',60000,2023-07-28),
+    -> (2, 'praveena','marketing',80000,2023-09-13),
+    -> (2, 'vimal','marketing',60000,2023-07-28),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 7
+mysql> insert into employee values(1, 'alam freed','finance',30000,2023-02-20),
+    -> (2, 'henry','marketing',40000,2023-06-29),
+    -> (3, 'vimal','marketing',60000,2023-07-28),
+    -> (4, 'praveena','marketing',80000,2023-09-13),
+    -> (4, 'prakash','Developer',100000,2023-05-19),
+    -> (5, 'husky','Developer',190000,2023-09-10),;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 6
+mysql> insert into employee values(1, 'alam freed','finance',30000,2023-02-20);
+ERROR 1292 (22007): Incorrect date value: '2001' for column 'joindate' at row 1
+mysql> insert into employee values(1, 'alam freed','finance',30000,'2023-02-20');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into employee values(2, 'kathir','finance',40000,'2023-07-30');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(3, 'praveena','deveplor',80000,'2023-09-23');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into employee values(4, 'prakash','deveplor',120000,'2023-03-14');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into employee values(5, 'Keerthana','web ',130000,'2023-12-17');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into employee values(6, 'Seelan','web ',160000,'2023-12-18');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select* from employee;
++-------+------------+----------+--------+------------+
+| empid | name       | dept     | salary | joindate   |
++-------+------------+----------+--------+------------+
+|     1 | alam freed | finance  |  30000 | 2023-02-20 |
+|     2 | kathir     | finance  |  40000 | 2023-07-30 |
+|     3 | praveena   | deveplor |  80000 | 2023-09-23 |
+|     4 | prakash    | deveplor | 120000 | 2023-03-14 |
+|     5 | Keerthana  | web      | 130000 | 2023-12-17 |
+|     6 | Seelan     | web      | 160000 | 2023-12-18 |
++-------+------------+----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select *from employee wher
+    -> dept ='web';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dept ='web'' at line 2
+mysql> select *from employee where
+    -> dept='web';
+Empty set (0.00 sec)
+
+mysql> select *from employee where dept ='finance';
++-------+------------+---------+--------+------------+
+| empid | name       | dept    | salary | joindate   |
++-------+------------+---------+--------+------------+
+|     1 | alam freed | finance |  30000 | 2023-02-20 |
+|     2 | kathir     | finance |  40000 | 2023-07-30 |
++-------+------------+---------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from employee where dept ='developer';
+Empty set (0.00 sec)
+
+mysql> select *from employee where dept ='deveplor';
++-------+----------+----------+--------+------------+
+| empid | name     | dept     | salary | joindate   |
++-------+----------+----------+--------+------------+
+|     3 | praveena | deveplor |  80000 | 2023-09-23 |
+|     4 | prakash  | deveplor | 120000 | 2023-03-14 |
++-------+----------+----------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select *from employee where dept ='web';
+Empty set (0.00 sec)
+
+mysql> select *from employee where dept ='web';
+Empty set (0.00 sec)
+
+mysql> select* from employee;
++-------+------------+----------+--------+------------+
+| empid | name       | dept     | salary | joindate   |
++-------+------------+----------+--------+------------+
+|     1 | alam freed | finance  |  30000 | 2023-02-20 |
+|     2 | kathir     | finance  |  40000 | 2023-07-30 |
+|     3 | praveena   | deveplor |  80000 | 2023-09-23 |
+|     4 | prakash    | deveplor | 120000 | 2023-03-14 |
+|     5 | Keerthana  | web      | 130000 | 2023-12-17 |
+|     6 | Seelan     | web      | 160000 | 2023-12-18 |
++-------+------------+----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select *from employee where dept ='web';
+Empty set (0.00 sec)
+
+mysql> select *from employee where dept ='web ';
++-------+-----------+------+--------+------------+
+| empid | name      | dept | salary | joindate   |
++-------+-----------+------+--------+------------+
+|     5 | Keerthana | web  | 130000 | 2023-12-17 |
+|     6 | Seelan    | web  | 160000 | 2023-12-18 |
++-------+-----------+------+--------+------------+
+2 rows in set (0.00 sec)
+
+mysql>  update employee
+    -> set salary=140000
+    -> where empid=3;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from employee;
++-------+------------+----------+--------+------------+
+| empid | name       | dept     | salary | joindate   |
++-------+------------+----------+--------+------------+
+|     1 | alam freed | finance  |  30000 | 2023-02-20 |
+|     2 | kathir     | finance  |  40000 | 2023-07-30 |
+|     3 | praveena   | deveplor | 140000 | 2023-09-23 |
+|     4 | prakash    | deveplor | 120000 | 2023-03-14 |
+|     5 | Keerthana  | web      | 130000 | 2023-12-17 |
+|     6 | Seelan     | web      | 160000 | 2023-12-18 |
++-------+------------+----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update employee set name ='renu' where empid=1;
+Query OK, 1 row affected (0.04 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from employee;
++-------+-----------+----------+--------+------------+
+| empid | name      | dept     | salary | joindate   |
++-------+-----------+----------+--------+------------+
+|     1 | renu      | finance  |  30000 | 2023-02-20 |
+|     2 | kathir    | finance  |  40000 | 2023-07-30 |
+|     3 | praveena  | deveplor | 140000 | 2023-09-23 |
+|     4 | prakash   | deveplor | 120000 | 2023-03-14 |
+|     5 | Keerthana | web      | 130000 | 2023-12-17 |
+|     6 | Seelan    | web      | 160000 | 2023-12-18 |
++-------+-----------+----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update employee set salary =salary+100000 where dept='finance';
+Query OK, 2 rows affected (0.05 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select*from employee;
++-------+-----------+----------+--------+------------+
+| empid | name      | dept     | salary | joindate   |
++-------+-----------+----------+--------+------------+
+|     1 | renu      | finance  | 130000 | 2023-02-20 |
+|     2 | kathir    | finance  | 140000 | 2023-07-30 |
+|     3 | praveena  | deveplor | 140000 | 2023-09-23 |
+|     4 | prakash   | deveplor | 120000 | 2023-03-14 |
+|     5 | Keerthana | web      | 130000 | 2023-12-17 |
+|     6 | Seelan    | web      | 160000 | 2023-12-18 |
++-------+-----------+----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> update employee set salary =salary+100000;
+Query OK, 6 rows affected (0.03 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+mysql> select*from employee;
++-------+-----------+----------+--------+------------+
+| empid | name      | dept     | salary | joindate   |
++-------+-----------+----------+--------+------------+
+|     1 | renu      | finance  | 230000 | 2023-02-20 |
+|     2 | kathir    | finance  | 240000 | 2023-07-30 |
+|     3 | praveena  | deveplor | 240000 | 2023-09-23 |
+|     4 | prakash   | deveplor | 220000 | 2023-03-14 |
+|     5 | Keerthana | web      | 230000 | 2023-12-17 |
+|     6 | Seelan    | web      | 260000 | 2023-12-18 |
++-------+-----------+----------+--------+------------+
+6 rows in set (0.00 sec)
+
+mysql> rename employee dept to department;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'employee dept to department' at line 1
+mysql> rename  table employee  to emp;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> desc emp;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int         | NO   | PRI | NULL    |       |
+| name     | varchar(50) | YES  |     | NULL    |       |
+| dept     | varchar(50) | YES  |     | NULL    |       |
+| salary   | int         | YES  |     | NULL    |       |
+| joindate | date        | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select* from emp;
++-------+-----------+----------+--------+------------+
+| empid | name      | dept     | salary | joindate   |
++-------+-----------+----------+--------+------------+
+|     1 | renu      | finance  | 230000 | 2023-02-20 |
+|     2 | kathir    | finance  | 240000 | 2023-07-30 |
+|     3 | praveena  | deveplor | 240000 | 2023-09-23 |
+|     4 | prakash   | deveplor | 220000 | 2023-03-14 |
+|     5 | Keerthana | web      | 230000 | 2023-12-17 |
+|     6 | Seelan    | web      | 260000 | 2023-12-18 |
++-------+-----------+----------+--------+------------+
