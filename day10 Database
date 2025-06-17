@@ -1,14 +1,3 @@
-CREATE TABLE emp (
-    ->   empno decimal(4,0) NOT NULL,
-    ->   ename varchar(10) default NULL,
-    ->   job varchar(9) default NULL,
-    ->   mgr decimal(4,0) default NULL,
-    ->   hiredate date default NULL,
-    ->   sal decimal(7,2) default NULL,
-    ->   comm decimal(7,2) default NULL,
-    ->   deptno decimal(2,0) default NULL
-    -> );
-ERROR 1046 (3D000): No database selected
 mysql> create database work;
 Query OK, 1 row affected (0.04 sec)
 
@@ -234,11 +223,6 @@ mysql> select ename,sal,sal*12
 
 mysql> select ename,sal,sal*12
     -> from emp
-    -> where sal*12>=120000;
-Empty set (0.04 sec)
-
-mysql> select ename,sal,sal*12
-    -> from emp
     -> where sal*12 >= 12000;
 +--------+---------+----------+
 | ename  | sal     | sal*12   |
@@ -313,13 +297,6 @@ mysql> select distinct ename
 | MILLER |
 +--------+
 14 rows in set (0.05 sec)
-
-mysql> slect ename
-    -> from emp
-    -> from emp;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect ename
-from emp
-from emp' at line 1
 mysql> select ename
     -> from emp
     -> where ename like 'a%n';
@@ -352,16 +329,6 @@ mysql> select ename
 | ALLEN |
 +-------+
 1 row in set (0.00 sec)
-
-mysql> select ename,sal
-    -> from emp
-    -> where sal like'_____';
-Empty set (0.00 sec)
-
-mysql> select ename,sal
-    -> from emp
-    -> where sal like'____';
-Empty set (0.00 sec)
 
 mysql> select ename,sal
     -> from emp
@@ -444,20 +411,6 @@ mysql> select* from emp
 +-------+--------+-----------+------+------------+---------+---------+--------+
 14 rows in set (0.01 sec)
 
-mysql> select* from emp
-    -> where deptno not in (10,20,30);
-Empty set (0.00 sec)
-
-mysql> select* from emp
-    -> where not deptno in (10,20,30);
-Empty set (0.00 sec)
-
-mysql> select*
-    -> from emp
-    -> where deptno=10 not or deptno=30;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'or deptno=30' at line 3
-mysql> where not deptno=10  or deptno=30;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'where not deptno=10  or deptno=30' at line 1
 mysql> select*
     -> from emp
     -> where deptno not in(10,30);
