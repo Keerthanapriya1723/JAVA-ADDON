@@ -1,0 +1,210 @@
+
+mysql> create database Customer;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use customer;
+Database changed
+
+mysql> create table student (
+    -> sroll int,
+    -> sname varchar(50),
+    -> studentmark int
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> insert into student values(2323,'ravi',89);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into student values(2324,'renu',98);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into student values(2325,'mathu',90);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into student values(2326,'kathir',90);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into student values(2327,'sheela',90);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into student values(2328,'mani',99);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select*from student;
++-------+--------+-------------+
+| sroll | sname  | studentmark |
++-------+--------+-------------+
+|  2323 | ravi   |          89 |
+|  2324 | renu   |          98 |
+|  2325 | mathu  |          90 |
+|  2326 | kathir |          90 |
+|  2327 | sheela |          90 |
+|  2328 | mani   |          99 |
++-------+--------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into student values(2329,'babu',76);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into student values(2330,'reshma',78);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select*from student;
++-------+--------+-------------+
+| sroll | sname  | studentmark |
++-------+--------+-------------+
+|  2323 | ravi   |          89 |
+|  2324 | renu   |          98 |
+|  2325 | mathu  |          90 |
+|  2326 | kathir |          90 |
+|  2327 | sheela |          90 |
+|  2328 | mani   |          99 |
+|  2329 | babu   |          76 |
+|  2330 | reshma |          78 |
++-------+--------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> select*
+    -> from student
+    -> where studentmark > 80;
++-------+--------+-------------+
+| sroll | sname  | studentmark |
++-------+--------+-------------+
+|  2323 | ravi   |          89 |
+|  2324 | renu   |          98 |
+|  2325 | mathu  |          90 |
+|  2326 | kathir |          90 |
+|  2327 | sheela |          90 |
+|  2328 | mani   |          99 |
++-------+--------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> create table course(
+    -> coursename varchar(50),
+    -> coursefee int
+    -> );
+Query OK, 0 rows affected (0.10 sec)
+
+mysql> insert into course values('ravi',23000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course values('renu',17000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into course values('mathu',12000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course values('kathir',24000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course values('sheela',14000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into course values('mani',32000);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select*from course;
++------------+-----------+
+| coursename | coursefee |
++------------+-----------+
+| ravi       |     23000 |
+| renu       |     17000 |
+| mathu      |     12000 |
+| kathir     |     24000 |
+| sheela     |     14000 |
+| mani       |     32000 |
++------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select*from course
+    -> order by coursefee asc;
++------------+-----------+
+| coursename | coursefee |
++------------+-----------+
+| mathu      |     12000 |
+| sheela     |     14000 |
+| renu       |     17000 |
+| ravi       |     23000 |
+| kathir     |     24000 |
+| mani       |     32000 |
++------------+-----------+
+6 rows in set (0.00 sec)
+
+create table books(
+sno int,
+bookname varchar(50)' at line 1
+mysql> create table books(
+    -> sno int,
+    -> bookname varchar(50)
+    -> );
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> insert into  books values(1,'java');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into  books values(2,'c');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into  books values(3,'c++');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into  books values(4,'python');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into  books values(5,'linux');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into  books values(6,'html');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into  books values(7,'css');
+Query OK, 1 row affected (0.03 sec)
+
+mysql> insert into  books values(8,'javascript');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into  books values(9,'react');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into  books values(10,'devops');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select*from books;
++------+------------+
+| sno  | bookname   |
++------+------------+
+|    1 | java       |
+|    2 | c          |
+|    3 | c++        |
+|    4 | python     |
+|    5 | linux      |
+|    6 | html       |
+|    7 | css        |
+|    8 | javascript |
+|    9 | react      |
+|   10 | devops     |
++------+------------+
+10 rows in set (0.00 sec)
+
+mysql> select bookname
+    -> from books
+    -> where bookname like 'c%';
++----------+
+| bookname |
++----------+
+| c        |
+| c++      |
+| css      |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> select bookname
+    -> from books
+    -> where bookname like 'j%';
++------------+
+| bookname   |
++------------+
+| java       |
+| javascript |
++------------+
+2 rows in set (0.00 sec)
